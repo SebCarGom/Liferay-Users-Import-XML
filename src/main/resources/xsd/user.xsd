@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+	<xs:element name="firstName" nillable="false">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="75" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="middleName" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="75" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="lastName" nillable="false">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="75" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="screenName" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="75" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="birthday" nillable="true">
+		<xs:annotation>
+			<xs:documentation>Either an empty string or a date of the format
+				DDMMYYYY
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="|\s|[0-3][0-9]-[0-1][0-9]-[0-9]{4}" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="sex" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="" />
+				<xs:enumeration value=" " />
+				<xs:enumeration value="female" />
+				<xs:enumeration value="male" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="email" nillable="false">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="75" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="password" nillable="false">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="6"/>
+				<xs:maxLength value="75" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="confirmPassword" nillable="false">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="6"/>
+				<xs:maxLength value="75" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="jobTitle" type="xs:string"
+		nillable="true" />
+	
+	<xs:element name="user">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="firstName" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="middleName" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="lastName" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="screenName" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="birthday" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="sex" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="email" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="password" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="confirmPassword" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="jobTitle" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="users">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="user" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

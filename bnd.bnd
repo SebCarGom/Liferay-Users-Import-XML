@@ -1,0 +1,4 @@
+Bundle-Name: xml-users-form
+Bundle-SymbolicName: xml.users.form
+Bundle-Version: 1.0.0
+Export-Package: xml.users.form.constants
